@@ -1,5 +1,5 @@
 import User from "../../models/User";
-import {response} from "express";
+import { response } from "express";
 
 export default {
     Query: {
@@ -34,19 +34,12 @@ export default {
                 })
             })
         },
-        editUser: async (root, {_id, username, email, password}) => {
-            const response = await User.findByIdAndUpdate({_id}, {$set: {username, email, password}}, {new: true}).exec();
+        editUser: async (root, {_id, username, email, password, games}) => {
+            const response = await User.findByIdAndUpdate({_id}, {$set: {username, email, password, games}}, {new: true}).exec();
             if(!response){
                 throw new Error(`Cannot save user: ${_id}`);
             }
             return response;
         }
-        /*editUser: (root, {_id, username, email, password}) => {
-            return new Promise((resolve, reject) => {
-                User.findByIdAndUpdate({_id}, {$set: {username, email, password}}, {new: true}).exec((error, response) => {
-                    error ? reject(error) : resolve(response);
-                })
-            })
-        } */
     }
 }

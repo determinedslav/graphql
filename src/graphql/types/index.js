@@ -4,4 +4,4 @@ import Game from "./Game";
 
 const typeDefs = [User, Game];
 
-export default mergeTypes(typeDefs, {all: true})
+export default mergeTypes(typeDefs, {all: true});
